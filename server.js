@@ -27,15 +27,20 @@ const user = mongooes.model('user',{
 
 
 app.get('/' , (req,res)=>{
-    new user({name:"harsh",age:20})
-    .save().then(console.log)
+    const name =  Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    const age = Math.floor((Math.random() * 100) + 1)
+
+
+    new user({name:name,age:age})
+    .save().then((res) => res.send(res))
     .catch(console.log)
-    res.send("<h1>harsh</h1>")
+   
 })
 
 app.get('/about', (req,res)=>{
     user.find({})
-    .then(console.log)
+    .then((res) =>res.send(res))
+    .catch(console.log)
 })
 
 app.listen(8080,()=>{
