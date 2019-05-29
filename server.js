@@ -28,14 +28,16 @@ const user = mongooes.model('user',{
 
 app.get('/' , (req,res)=>{
     new user({name:"harsh",age:20})
-    .save().then(res => res.send(res))
+    .save().then(console.log)
+    .catch(console.log)
     res.send("<h1>harsh</h1>")
 })
 
 app.get('/about', (req,res)=>{
-    console.log(user.find({}))
+    user.find({})
+    .then(console.log)
 })
 
-app.listen(3000,()=>{
+app.listen(8080,()=>{
     console.log("server is running")
 })
