@@ -32,14 +32,14 @@ app.get('/' , (req,res)=>{
 
 
     new user({name:name,age:age})
-    .save().then((res) => res.send(res))
+    .save().then((rest) => res.send(rest))
     .catch(console.log)
    
 })
 
 app.get('/about', (req,res)=>{
     user.find({})
-    .then((res) =>res.send(res))
+    .then((rest) =>res.send(rest))
     .catch(console.log)
 })
 
